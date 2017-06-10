@@ -1,1 +1,3 @@
 # sample-jenkinsfile-rb
+
+これはサンプルリポジトリです
