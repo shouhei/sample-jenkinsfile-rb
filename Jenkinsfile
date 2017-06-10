@@ -6,7 +6,7 @@ def git_url = "git@github.com:shouhei/${repo_name}.git"
 def dev_branch = "dev"
 def release_branch = "master"
 
-ruby {
+node {
     try {
         // ソースの取得
         stage("get resource") {
