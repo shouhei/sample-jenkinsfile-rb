@@ -13,6 +13,7 @@ node {
             sh 'eval "$(rbenv init -)"'
             sh 'rbenv local 2.4.0'
             sh 'gem install bundler'
+            sh 'gem install rake'
         }
         // ソースの取得
         stage("get resource") {
