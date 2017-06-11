@@ -8,6 +8,11 @@ def release_branch = "master"
 
 node {
     try {
+        stage('Prepare') {
+            env.PATH = '/usr/local/bin:$JENKINS_HOME/.rbenv/shims:$JENKINS_HOME/.rbenv/bin:$PATH'
+            sh 'eval "$(rbenv init -)"'
+            sh 'rbenv local 2.4.0'
+        }
         // ソースの取得
         stage("get resource") {
             // カレントディレクトにgitリポジトリが存在するか否かの確認
@@ -37,6 +42,16 @@ node {
                 }
             }
         }
+
+        stage("install libs") {
+            withEnv(["PATH+NODE=${JENKINS_HOME}/.nvm/versions/node/v6.9.5/bin/"]) {
+                def NPM_RESULT = sh(script: "cd ./${repo_name} && npm install", returnStatus: true) == 0
+                if(!NPM_RESULT) {
+                    error "npm installに失敗しました"
+                }
+            }
+        }
+
 
     } catch (err) {
         err_msg = "${err}"
