@@ -12,6 +12,7 @@ node {
             env.PATH = "/usr/local/bin:$JENKINS_HOME/.rbenv/shims:$JENKINS_HOME/.rbenv/bin:$PATH"
             sh 'eval "$(rbenv init -)"'
             sh 'rbenv local 2.4.0'
+            sh 'gem install bundler'
         }
         // ソースの取得
         stage("get resource") {
@@ -46,7 +47,7 @@ node {
         stage("install libs") {
             def GEM_RESULT = sh(script: "cd ./${repo_name} && bundle install --path=vendor/bundle", returnStatus: true) == 0
             if(!GEM_RESULT) {
-                error "npm installに失敗しました"
+                error "gem installに失敗しました"
             }
         }
 
