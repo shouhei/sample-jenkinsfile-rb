@@ -9,7 +9,7 @@ def release_branch = "master"
 node {
     try {
         stage('prepare') {
-            env.PATH = '/usr/local/bin:$JENKINS_HOME/.rbenv/shims:$JENKINS_HOME/.rbenv/bin:$PATH'
+            env.PATH = "/usr/local/bin:$JENKINS_HOME/.rbenv/shims:$JENKINS_HOME/.rbenv/bin:$PATH"
             sh 'eval "$(rbenv init -)"'
             sh 'rbenv local 2.4.0'
         }
