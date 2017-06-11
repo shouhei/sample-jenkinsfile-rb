@@ -5,7 +5,7 @@ Rake::TestTask.new do |t|
 end
 
 task :rubocop do
-  sh 'rubocop'
+  sh 'bundle exec rubocop'
 end
 
 task all: [:rubocop, :test]
