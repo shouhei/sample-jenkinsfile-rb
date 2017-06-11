@@ -3,7 +3,7 @@
 def err_msg = ""
 def repo_name = "sample-jenkinsfile-rb"
 def git_url = "git@github.com:shouhei/${repo_name}.git"
-def dev_branch = "dev"
+def dev_branch = "development"
 def release_branch = "master"
 
 node {
