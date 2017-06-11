@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rake/testtask'
 
 Rake::TestTask.new do |t|
@@ -8,4 +10,4 @@ task :rubocop do
   sh 'bundle exec rubocop'
 end
 
-task all: [:rubocop, :test]
+task all: %i[rubocop test]
