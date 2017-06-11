@@ -8,7 +8,7 @@ def release_branch = "master"
 
 node {
     try {
-        stage('Prepare') {
+        stage('prepare') {
             env.PATH = '/usr/local/bin:$JENKINS_HOME/.rbenv/shims:$JENKINS_HOME/.rbenv/bin:$PATH'
             sh 'eval "$(rbenv init -)"'
             sh 'rbenv local 2.4.0'
@@ -44,14 +44,11 @@ node {
         }
 
         stage("install libs") {
-            withEnv(["PATH+NODE=${JENKINS_HOME}/.nvm/versions/node/v6.9.5/bin/"]) {
-                def NPM_RESULT = sh(script: "cd ./${repo_name} && npm install", returnStatus: true) == 0
-                if(!NPM_RESULT) {
-                    error "npm installに失敗しました"
-                }
+            def GEM_RESULT = sh(script: "cd ./${repo_name} && bundle install --path=vendor/bundle", returnStatus: true) == 0
+            if(!GEM_RESULT) {
+                error "npm installに失敗しました"
             }
         }
-
 
     } catch (err) {
         err_msg = "${err}"
