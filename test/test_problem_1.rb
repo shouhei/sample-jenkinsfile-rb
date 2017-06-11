@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 $LOAD_PATH << 'src'
 require 'minitest/autorun'
 require 'minitest/unit'
