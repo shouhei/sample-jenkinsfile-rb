@@ -52,6 +52,13 @@ node {
             }
         }
 
+        stage("test") {
+            def GEM_RESULT = sh(script: "cd ./${repo_name} && rake all", returnStatus: true) == 0
+            if(!GEM_RESULT) {
+                error "テストに失敗しました"
+            }
+        }
+
     } catch (err) {
         err_msg = "${err}"
         currentBuild.result = "FAILURE"
