@@ -1,7 +1,7 @@
 $LOAD_PATH << 'src'
 require 'minitest/autorun'
 require 'minitest/unit'
-require 'problem-1.rb'
+require 'problem_1'
 
 class TestProblem1 < MiniTest::Unit::TestCase
   def test_sample
