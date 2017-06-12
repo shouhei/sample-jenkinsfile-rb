@@ -6,6 +6,7 @@ Rake::TestTask.new do |t|
   t.pattern = 'test/test_*.rb'
 end
 
+desc "Run rubocop"
 task :rubocop do
   sh 'bundle exec rubocop'
 end
