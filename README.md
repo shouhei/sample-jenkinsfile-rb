@@ -6,6 +6,7 @@
 
 ```
 git clone https://github.com/shouhei/sample-jenkinsfile-rb.git
+cd sample-jenkinsfile-rb
 bundle install --path=vendor/bundle
 ```
 
